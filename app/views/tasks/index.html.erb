@@ -1,0 +1,22 @@
+<h1 class="text-center justify-content-center">Tasks</h1>
+
+<ul class="list-unstyled">
+  <% @tasks.each do |task| %>
+    <li class="d-flex align-items-center py-2">
+      <div class="form-check me-2">
+        <input class="form-check-input" type="checkbox" value="">
+      </div>
+
+      <%= link_to task.title, task_path(task) %>
+
+      <div class="ms-auto d-flex">
+        <%= button_to task_path(task), method: :delete, data: { turbo_confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash"></i>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<div class="d-flex justify-content-center">
+<%= link_to "+ ADD TASK", new_task_path, class: "btn btn-primary" %>
+</div>
